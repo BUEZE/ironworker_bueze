@@ -12,7 +12,6 @@ sqs = Aws::SQS::Client.new
 q_url = sqs.get_queue_url(queue_name: 'SOA_queue').queue_url
 
 puts "Polling SQS for messages"
-
 poller = Aws::SQS::QueuePoller.new(q_url)
 begin
   poller.poll(wait_time_seconds:nil, idle_timeout:5) do |msg|
@@ -22,7 +21,6 @@ begin
     puts "RESULTS: #{results}\n\n"
   end
 rescue Aws::SQS::Errors::ServiceError => e
-  # rescues all errors returned by Amazon Simple Queue Service
   puts "ERROR FROM SQS: #{e}"
 end
 

@@ -3,7 +3,7 @@ require 'json'
 require 'aws-sdk'
 require 'httparty'
 
-puts "Starting SOA_worker at #{Time.now}"
+puts "Starting Bueze_worker at #{Time.now}"
 
 puts "Setting up AWS connection"
 config = JSON.parse(File.read('config/config.json'))
@@ -29,4 +29,4 @@ rescue Aws::SQS::Errors::ServiceError => e
   puts "ERROR FROM SQS: #{e}"
 end
 
-puts "SOA_worker completed at #{Time.now}"
+puts "Bueze_worker completed at #{Time.now}"
